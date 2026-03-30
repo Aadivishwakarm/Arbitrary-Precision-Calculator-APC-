@@ -29,22 +29,25 @@ int main(int argc, char *argv[])
 
     /* ===========================
            SWITCH-CASE LOGIC
-       =========================== */
-
+       =========================== */    
+    printf("\n========================================\n");
+    printf("   Author: Aditya Shirawal\n");
+    printf("   ARBITRARY PRECISION CALCULATOR\n");
+    printf("========================================\n\n");
     switch (op[0])
     {
         case '+':
-            printf("===========================\n");
-            printf("    Addition selected.\n");
-            printf("===========================\n");
+            printf("Operation : Addition\n");
+            printf("Input     : %s + %s\n", a, b);
+            printf("----------------------------------------\n");
             signed_addition(h1, t1, sign1, h2, t2, sign2, &h3, &t3);
             break;
 
         case '-': 
         {
-            printf("===========================\n");
-            printf("    Substraction selected.\n");
-            printf("===========================\n");
+            printf("Operation : Subtraction\n");
+            printf("Input     : %s - %s\n", a, b);  
+            printf("----------------------------------------\n");
             char sign2_for_sub = (sign2 == '+') ? '-' : '+';
             signed_addition(h1, t1, sign1, h2, t2, sign2_for_sub, &h3, &t3);
             break;
@@ -52,9 +55,9 @@ int main(int argc, char *argv[])
 
         case 'x':
         {        
-            printf("===========================\n");
-            printf("  Multiplication selected.\n");
-            printf("===========================\n");
+            printf("Operation : Multiplication\n");
+            printf("Input     : %s x %s\n", a, b);
+            printf("----------------------------------------\n");
             multiplication(h1, t1, h2, t2, &h3, &t3);
             
             int zero = (h3->data == 0 && h3->next == NULL);
@@ -65,9 +68,9 @@ int main(int argc, char *argv[])
 
         case '/': 
         {
-            printf("===========================\n");
-            printf("    Division selected.\n");
-            printf("===========================\n");
+            printf("Operation : Division\n");
+            printf("Input     : %s / %s\n", a, b);
+            printf("----------------------------------------\n");
             division(h1, t1, h2, t2, &h3, &t3);
 
             int zero = (h3->data == 0 && h3->next == NULL);
@@ -93,7 +96,7 @@ int main(int argc, char *argv[])
     }
 
     node *p = h3;
-
+    printf("Result    : ");
     if (p->data == -1) {
         printf("-");
         p = p->next;
@@ -104,7 +107,8 @@ int main(int argc, char *argv[])
         p = p->next;
     }
 
-    printf("\n");
+    printf("\n");   
+    printf("========================================\n");
 
     free_list(&h1, &t1);
     free_list(&h2, &t2);
